@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 
-import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selectors.byText;
 
 public class PracticeFormTest {
 
@@ -46,7 +46,7 @@ public class PracticeFormTest {
         $("#hobbiesWrapper").$(byText("Music")).click();
 
         $("#uploadPicture").uploadFile(new File
-                ("src/test/data/file_example_JPG_100kB.jpg"));
+                ("src/test/resources/file_example_JPG_100kB.jpg"));
 
         $("#currentAddress").val("Test Street, 123");
 
