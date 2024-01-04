@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 
 public class PracticeFormTest {
@@ -16,7 +18,7 @@ public class PracticeFormTest {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = false;
+        Configuration.holdBrowserOpen = true;
     }
 
     @Test
@@ -45,22 +47,29 @@ public class PracticeFormTest {
         $("#hobbiesWrapper").$(byText("Reading")).click();
         $("#hobbiesWrapper").$(byText("Music")).click();
 
-        $("#uploadPicture").uploadFile(new File
-                ("src/test/resources/file_example_JPG_100kB.jpg"));
+        $("#uploadPicture").uploadFromClasspath("file_example_JPG_100kB.jpg");
 
         $("#currentAddress").val("Test Street, 123");
 
         $("#state").click();
-        $(byText("Uttar Pradesh")).click();
+        $("#state").$(byText("Uttar Pradesh")).click();
 
         $("#city").click();
-        $(byText("Merrut")).click();
+        $("#city").$(byText("Merrut")).click();
 
         $("#submit").click();
 
         //Modal window
-        $(".modal-content").shouldBe();
-        $("#closeLargeModal").click();
+        $(".modal-content").shouldBe(visible);
+        $(".modal-content").$(".table").shouldHave(text("Test Testov"));
+        $(".modal-content").$(".table").shouldHave(text("testov@test.test"));
+        $(".modal-content").$(".table").shouldHave(text("Other"));
+        $(".modal-content").$(".table").shouldHave(text("1234567890"));
+        $(".modal-content").$(".table").shouldHave(text("16 April,1975"));
+        $(".modal-content").$(".table").shouldHave(text("English, Computer Science"));
+        $(".modal-content").$(".table").shouldHave(text("Reading, Music"));
+        $(".modal-content").$(".table").shouldHave(text("file_example_JPG_100kB.jpg"));
+        $(".modal-content").$(".table").shouldHave(text("Test Street, 123"));
+        $(".modal-content").$(".table").shouldHave(text("Uttar Pradesh Merrut"));
     }
-
 }
