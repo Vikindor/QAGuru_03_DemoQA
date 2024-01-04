@@ -18,7 +18,7 @@ public class PracticeFormTest {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true;
+        Configuration.holdBrowserOpen = false;
     }
 
     @Test
@@ -61,15 +61,15 @@ public class PracticeFormTest {
 
         //Modal window
         $(".modal-content").shouldBe(visible);
-        $(".modal-content").$(".table").shouldHave(text("Test Testov"));
-        $(".modal-content").$(".table").shouldHave(text("testov@test.test"));
-        $(".modal-content").$(".table").shouldHave(text("Other"));
-        $(".modal-content").$(".table").shouldHave(text("1234567890"));
-        $(".modal-content").$(".table").shouldHave(text("16 April,1975"));
-        $(".modal-content").$(".table").shouldHave(text("English, Computer Science"));
-        $(".modal-content").$(".table").shouldHave(text("Reading, Music"));
-        $(".modal-content").$(".table").shouldHave(text("file_example_JPG_100kB.jpg"));
-        $(".modal-content").$(".table").shouldHave(text("Test Street, 123"));
-        $(".modal-content").$(".table").shouldHave(text("Uttar Pradesh Merrut"));
+        $(".modal-content").$(".table").shouldHave(text("Test Testov")); //Student Name
+        $(".modal-content").$(".table").shouldHave(text("testov@test.test")); //Student Email
+        $(".modal-content").$(".table").shouldHave(text("Other")); //Gender
+        $(".modal-content").$(".table").shouldHave(text("1234567890")); //Mobile
+        $(".modal-content").$(".table").shouldHave(text("16 April,1975")); //Date of Birth
+        $(".modal-content").$(".table").shouldHave(text("English, Computer Science")); //Subjects
+        $(".modal-content").$(".table").shouldHave(text("Reading, Music")); //Hobbies
+        $(".modal-content").$(".table").shouldHave(text("file_example_JPG_100kB.jpg")); //Picture
+        $(".modal-content").$(".table").shouldHave(text("Test Street, 123")); //Address
+        $(".modal-content").$(".table").shouldHave(text("Uttar Pradesh Merrut")); //State and City
     }
 }
