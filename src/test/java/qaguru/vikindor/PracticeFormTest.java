@@ -1,10 +1,9 @@
 package qaguru.vikindor;
 
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import java.io.File;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.text;
@@ -22,7 +21,7 @@ public class PracticeFormTest {
     }
 
     @Test
-    public void fillFormTest(){
+    public void fillFormTest() {
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
@@ -60,16 +59,15 @@ public class PracticeFormTest {
         $("#submit").click();
 
         //Modal window
-        $(".modal-content").shouldBe(visible);
-        $(".modal-content").$(".table").shouldHave(text("Test Testov")); //Student Name
-        $(".modal-content").$(".table").shouldHave(text("testov@test.test")); //Student Email
-        $(".modal-content").$(".table").shouldHave(text("Other")); //Gender
-        $(".modal-content").$(".table").shouldHave(text("1234567890")); //Mobile
-        $(".modal-content").$(".table").shouldHave(text("16 April,1975")); //Date of Birth
-        $(".modal-content").$(".table").shouldHave(text("English, Computer Science")); //Subjects
-        $(".modal-content").$(".table").shouldHave(text("Reading, Music")); //Hobbies
-        $(".modal-content").$(".table").shouldHave(text("file_example_JPG_100kB.jpg")); //Picture
-        $(".modal-content").$(".table").shouldHave(text("Test Street, 123")); //Address
-        $(".modal-content").$(".table").shouldHave(text("Uttar Pradesh Merrut")); //State and City
+        $(".modal-content").$(".table").shouldBe(visible).shouldHave(text("Test Testov"),
+                text("testov@test.test"), text("Other"), text("1234567890"), text("16 April,1975"),
+                text("English, Computer Science"), text("Reading, Music"), text("file_example_JPG_100kB.jpg"),
+                text("Test Street, 123"), text("Uttar Pradesh Merrut"));
     }
+
+    @AfterAll
+    static void terminateWebDriver() {
+        closeWebDriver();
+    }
+
 }
