@@ -3,16 +3,16 @@ plugins {
 }
 
 group = "qa.vikindor"
-version = "1.0-SNAPSHOT"
+version = "1.0"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    testImplementation("com.codeborne:selenide:7.9.4")
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
-    testImplementation("com.codeborne:selenide:7.9.4")
     // JUnit launcher
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     // SLF4J SimpleLogger
