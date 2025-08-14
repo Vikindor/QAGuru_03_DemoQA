@@ -1,1 +1,1 @@
-rootProject.name = "QAGuru_03_DemoQA"
+rootProject.name = "qaguru-03-demoqa"
